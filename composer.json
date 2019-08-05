@@ -1,0 +1,18 @@
+{
+    "name": "matozan/module-magento",
+    "description": "A Magento 2 module for learning",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "require": {
+        "php": "~7.2.0",
+        "magento/framework": "~102.0.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Matozan\\Magento\\": ""
+        }
+    }
+}
