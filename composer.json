@@ -5,7 +5,8 @@
     "version": "1.0.0",
     "require": {
         "php": "~7.2.0",
-        "magento/framework": "~102.0.0"
+        "magento/framework": "~102.0.0",
+        "magento/module-store": "~101.0.0"
     },
     "autoload": {
         "files": [
