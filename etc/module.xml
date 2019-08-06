@@ -2,5 +2,9 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Matozan_Magento"/>
+    <module name="Matozan_Magento">
+        <sequence>
+            <module name="Magento_Store"/>
+        </sequence>
+    </module>
 </config>

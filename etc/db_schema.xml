@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="matozan_brand_example" comment="Declarative Schema Example Table">
+        <column xsi:type="int" name="id" unsigned="true" identity="true" nullable="false" comment="Brand Id"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="124" comment="Brand Name"/>
+        <column xsi:type="text" name="description" nullable="true" comment="Brand Description"/>
+        <column xsi:type="boolean" name="is_enabled" nullable="false" default="0" comment="Is the Brand Enabled?"/>
+        <column xsi:type="decimal" name="weighing_factor" precision="5" scale="4" nullable="false" default="1"
+                unsigned="false" comment="Search Weighing Factor"/>
+        <column xsi:type="timestamp" name="created_at" default="CURRENT_TIMESTAMP"/>
+        <column xsi:type="timestamp" name="updated_at" default="CURRENT_TIMESTAMP" on_update="true"/>
+        <column xsi:type="smallint" name="website_id" padding="5" unsigned="true" nullable="false"
+                comment="Website Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="MATOZAN_BRAND_EXAMPLE_WEBSITE_ID_STORE_WEBSITE_WEBSITE_ID"
+                    column="website_id" referenceTable="store_website" referenceColumn="website_id" onDelete="CASCADE"/>
+        <constraint xsi:type="unique" referenceId="MATOZAN_BRAND_EXAMPLE_NAME">
+            <column name="name"/>
+        </constraint>
+    </table>
+</schema>

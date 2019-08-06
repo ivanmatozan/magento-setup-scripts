@@ -1,0 +1,19 @@
+{
+    "matozan_brand_example": {
+        "column": {
+            "id": true,
+            "name": true,
+            "description": true,
+            "is_enabled": true,
+            "weighing_factor": true,
+            "created_at": true,
+            "updated_at": true,
+            "website_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MATOZAN_BRAND_EXAMPLE_WEBSITE_ID_STORE_WEBSITE_WEBSITE_ID": true,
+            "MATOZAN_BRAND_EXAMPLE_NAME": true
+        }
+    }
+}
