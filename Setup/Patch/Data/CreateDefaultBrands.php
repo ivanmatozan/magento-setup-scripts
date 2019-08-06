@@ -6,7 +6,6 @@ namespace Matozan\Magento\Setup\Patch\Data;
 
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
-use Magento\Framework\Setup\Patch\PatchInterface;
 
 class CreateDefaultBrands implements DataPatchInterface
 {
