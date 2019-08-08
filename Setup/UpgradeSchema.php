@@ -64,6 +64,14 @@ class UpgradeSchema implements UpgradeSchemaInterface
             );
         }
 
+        // Rename table name
+        if (version_compare($context->getVersion(), '1.3.0', '<')) {
+            $setup->getConnection()->renameTable(
+                $setup->getTable('mage2tv_example_brand'),
+                $setup->getTable('mage2tv_example_new_brand')
+            );
+        }
+
         $setup->endSetup();
     }
 }
