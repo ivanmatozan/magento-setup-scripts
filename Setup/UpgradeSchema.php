@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Matozan\Magento\Setup;
 
+use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\UpgradeSchemaInterface;
@@ -15,6 +16,8 @@ class UpgradeSchema implements UpgradeSchemaInterface
      */
     public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
+        $setup->startSetup();
+
         $tableName = 'mage2tv_example_brand';
 
         // Check if table exists
@@ -33,5 +36,18 @@ class UpgradeSchema implements UpgradeSchemaInterface
         // Listing indexes and foreign keys
         $setup->getConnection()->getIndexList($setup->getTable($tableName));
         $setup->getConnection()->getForeignKeys($setup->getTable($tableName));
+
+        // Add new column
+        if (version_compare($context->getVersion(), '1.1.0', '<')) {
+            $setup->getConnection()->addColumn($setup->getTable($tableName), 'image_url', [
+                'type' => Table::TYPE_TEXT,
+                'length' => 255,
+                'nullable' => true,
+                'after' => 'description',
+                'comment' => 'Image URL'
+            ]);
+        }
+
+        $setup->endSetup();
     }
 }
