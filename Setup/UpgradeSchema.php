@@ -48,6 +48,22 @@ class UpgradeSchema implements UpgradeSchemaInterface
             ]);
         }
 
+        // Modify existing column
+        if (version_compare($context->getVersion(), '1.2.0', '<')) {
+            $setup->getConnection()->changeColumn(
+                $setup->getTable($tableName),
+                'image_url',
+                'image_url',
+                [
+                    'type' => Table::TYPE_TEXT,
+                    'length' => 512,
+                    'nullable' => true,
+                    'after' => 'description',
+                    'comment' => 'Image URL'
+                ]
+            );
+        }
+
         $setup->endSetup();
     }
 }
