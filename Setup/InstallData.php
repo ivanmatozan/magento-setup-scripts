@@ -110,6 +110,7 @@ class InstallData implements InstallDataInterface
             'user_defined' => 1,
             'input_filter' => 'striptags',
             'note' => 'Separate multiple interests with a comma.',
+            'validate_rules' => '{"min_text_length":2,"max_text_length":25}',
             'system' => 0,
             'position' => 100
         ]);
