@@ -108,6 +108,7 @@ class InstallData implements InstallDataInterface
             'label' => 'Interests',
             'required' => 0,
             'user_defined' => 1,
+            'input_filter' => 'striptags',
             'note' => 'Separate multiple interests with a comma.',
             'system' => 0,
             'position' => 100
