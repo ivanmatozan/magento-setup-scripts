@@ -6,6 +6,7 @@ namespace Matozan\Magento\Setup;
 
 use Magento\Catalog\Api\Data\CategoryAttributeInterface;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
+use Magento\Customer\Api\AddressMetadataInterface;
 use Magento\Customer\Api\CustomerMetadataInterface;
 use Magento\Customer\Model\ResourceModel\Attribute as AttributeResource;
 use Magento\Eav\Model\Config as EavConfig;
@@ -49,6 +50,7 @@ class InstallData implements InstallDataInterface
         $this->createProductAttribute();
         $this->createCategoryAttribute();
         $this->createCustomerAttribute();
+        $this->createCustomerAddressAttribute();
     }
 
     private function createProductAttribute(): void
@@ -119,6 +121,35 @@ class InstallData implements InstallDataInterface
             // In opensource version we need to manually add fields to create/edit forms
             'customer_account_create',
             'customer_account_edit'
+        ]);
+        $this->attributeResource->save($attribute);
+    }
+
+    private function createCustomerAddressAttribute(): void
+    {
+        $attributeCode = 'is_home_address';
+        $entityType = AddressMetadataInterface::ENTITY_TYPE_ADDRESS;
+        $setId = AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS;
+
+        $this->eavSetup->addAttribute($entityType, $attributeCode, [
+            'type' => 'int',
+            'input' => 'boolean',
+            'label' => 'Is Home Address',
+            'required' => 0,
+            'user_defined' => 1,
+            'default' => 0,
+            'system' => 0,
+            'position' => 50
+        ]);
+
+        $this->eavSetup->addAttributeToSet($entityType, $setId, null, $attributeCode);
+
+        $attribute = $this->eavConfig->getAttribute($entityType, $attributeCode);
+        $attribute->setData('used_in_forms', [
+            'adminhtml_customer_address',
+            // In opensource version we need to manually add fields to create/edit forms
+            'customer_register_address',
+            'customer_address_edit'
         ]);
         $this->attributeResource->save($attribute);
     }
