@@ -6,6 +6,9 @@ namespace Matozan\Magento\Setup;
 
 use Magento\Catalog\Api\Data\CategoryAttributeInterface;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
+use Magento\Customer\Api\CustomerMetadataInterface;
+use Magento\Customer\Model\ResourceModel\Attribute as AttributeResource;
+use Magento\Eav\Model\Config as EavConfig;
 use Magento\Eav\Setup\EavSetup;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -18,9 +21,24 @@ class InstallData implements InstallDataInterface
      */
     private $eavSetup;
 
-    public function __construct(EavSetup $eavSetup)
-    {
+    /**
+     * @var EavConfig
+     */
+    private $eavConfig;
+
+    /**
+     * @var AttributeResource
+     */
+    private $attributeResource;
+
+    public function __construct(
+        EavSetup $eavSetup,
+        EavConfig $eavConfig,
+        AttributeResource $attributeResource
+    ) {
         $this->eavSetup = $eavSetup;
+        $this->eavConfig = $eavConfig;
+        $this->attributeResource = $attributeResource;
     }
 
     /**
@@ -30,6 +48,7 @@ class InstallData implements InstallDataInterface
     {
         $this->createProductAttribute();
         $this->createCategoryAttribute();
+        $this->createCustomerAttribute();
     }
 
     private function createProductAttribute(): void
@@ -75,5 +94,32 @@ class InstallData implements InstallDataInterface
         $groupId = $this->eavSetup->getDefaultAttributeGroupId($entityType, $setId);
 
         $this->eavSetup->addAttributeToSet($entityType, $setId, $groupId, $attributeCode);
+    }
+
+    private function createCustomerAttribute(): void
+    {
+        $attributeCode = 'interests';
+        $entityType = CustomerMetadataInterface::ENTITY_TYPE_CUSTOMER;
+        $setId = CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER;
+
+        $this->eavSetup->addAttribute($entityType, $attributeCode, [
+            'label' => 'Interests',
+            'required' => 0,
+            'user_defined' => 1,
+            'note' => 'Separate multiple interests with a comma.',
+            'system' => 0,
+            'position' => 100
+        ]);
+
+        $this->eavSetup->addAttributeToSet($entityType, $setId, null, $attributeCode);
+
+        $attribute = $this->eavConfig->getAttribute($entityType, $attributeCode);
+        $attribute->setData('used_in_forms', [
+            'adminhtml_customer',
+            // In opensource version we need to manually add fields to create/edit forms
+            'customer_account_create',
+            'customer_account_edit'
+        ]);
+        $this->attributeResource->save($attribute);
     }
 }
