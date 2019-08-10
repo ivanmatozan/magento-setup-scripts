@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Matozan\Magento\Setup;
 
+use Magento\Catalog\Api\Data\CategoryAttributeInterface;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Eav\Setup\EavSetup;
 use Magento\Framework\Setup\InstallDataInterface;
@@ -28,6 +29,7 @@ class InstallData implements InstallDataInterface
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
         $this->createProductAttribute();
+        $this->createCategoryAttribute();
     }
 
     private function createProductAttribute(): void
@@ -56,5 +58,22 @@ class InstallData implements InstallDataInterface
             'group' => $groupName,
             'sort_order' => 30
         ]);
+    }
+
+    private function createCategoryAttribute(): void
+    {
+        $attributeCode = 'external_id';
+        $entityType = CategoryAttributeInterface::ENTITY_TYPE_CODE;
+
+        $this->eavSetup->addAttribute($entityType, $attributeCode, [
+            'label' => 'External Id',
+            'user_defined' => 1,
+            'unique' => 1
+        ]);
+
+        $setId = $this->eavSetup->getDefaultAttributeSetId($entityType);
+        $groupId = $this->eavSetup->getDefaultAttributeGroupId($entityType, $setId);
+
+        $this->eavSetup->addAttributeToSet($entityType, $setId, $groupId, $attributeCode);
     }
 }
