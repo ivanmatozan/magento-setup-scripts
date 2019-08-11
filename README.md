@@ -22,3 +22,18 @@ A Magento 2 module for learning.
 - Magento\CatalogSearch\Model\ResourceModel\Setup\PropertyMapper
 
 ---
+
+### Router list (Magento\Framework\App\RouterList)
+
+**frontend:** 
+- 10 => robots (Magento\Robots\Controller\Router)
+- 20 => urlrewrite (Magento\UrlRewrite\Controller\Router)
+- 30 => standard (Magento\Framework\App\Router\Base)
+- 60 => cms (Magento\Cms\Controller\Router)
+- 100 => default (Magento\Framework\App\Router\DefaultRouter)
+
+**adminhtml:**
+- 10 => admin (Magento\Backend\App\Router)
+- 100 => default (Magento\Framework\App\Router\DefaultRouter)
+
+---
