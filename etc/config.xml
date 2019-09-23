@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <general>
+            <custom>
+                <active>0</active>
+                <one>1</one>
+                <two>2</two>
+                <three>3</three>
+            </custom>
+        </general>
+    </default>
+</config>

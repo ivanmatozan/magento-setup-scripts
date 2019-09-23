@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="general">
+            <group id="custom" type="text" translate="label" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Custom</label>
+                <field id="active" type="select" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Active</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="one" type="text" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>One</label>
+                </field>
+                <field id="two" type="text" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Two</label>
+                </field>
+                <field id="three" type="text" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Three</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
