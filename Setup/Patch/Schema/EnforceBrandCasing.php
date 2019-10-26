@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Matozan\Magento\Setup\Patch\Schema;
+namespace Matozan\SetupScripts\Setup\Patch\Schema;
 
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\DB\Ddl\Trigger;
 use Magento\Framework\DB\Ddl\TriggerFactory;
 use Magento\Framework\Setup\Patch\SchemaPatchInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
-use Matozan\Magento\Setup\StoredRoutinesProvider;
+use Matozan\SetupScripts\Setup\StoredRoutinesProvider;
 
 class EnforceBrandCasing implements SchemaPatchInterface
 {

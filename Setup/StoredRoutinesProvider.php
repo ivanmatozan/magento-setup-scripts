@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Matozan\Magento\Setup;
+namespace Matozan\SetupScripts\Setup;
 
 class StoredRoutinesProvider
 {

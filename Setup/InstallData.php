@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Matozan\Magento\Setup;
+namespace Matozan\SetupScripts\Setup;
 
 use Magento\Catalog\Api\Data\CategoryAttributeInterface;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
@@ -88,6 +88,7 @@ class InstallData implements InstallDataInterface
 
         $this->eavSetup->addAttribute($entityType, $attributeCode, [
             'label' => 'External Id',
+            'required' => 0,
             'user_defined' => 1,
             'unique' => 1
         ]);

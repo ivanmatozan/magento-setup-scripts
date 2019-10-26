@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Matozan\Magento\Setup;
+namespace Matozan\SetupScripts\Setup;
 
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;

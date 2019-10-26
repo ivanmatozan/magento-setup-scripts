@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Matozan\Magento\Model;
+namespace Matozan\SetupScripts\Model;
 
 use Magento\Framework\Model\AbstractModel;
 

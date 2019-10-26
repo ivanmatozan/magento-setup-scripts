@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Matozan\Magento\Controller\Index;
+namespace Matozan\SetupScripts\Controller\Index;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\Controller\ResultFactory;

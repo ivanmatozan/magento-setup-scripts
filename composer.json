@@ -1,6 +1,6 @@
 {
-    "name": "matozan/module-magento",
-    "description": "A Magento 2 module for learning",
+    "name": "matozan/module-magento-setup-scripts",
+    "description": "Learning Magento 2 Setup Scripts",
     "type": "magento2-module",
     "version": "1.0.0",
     "require": {
@@ -13,7 +13,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Matozan\\Magento\\": ""
+            "Matozan\\SetupScripts\\": ""
         }
     }
 }

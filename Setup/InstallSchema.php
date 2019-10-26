@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Matozan\Magento\Setup;
+namespace Matozan\SetupScripts\Setup;
 
 use Magento\Framework\DB\Adapter\AdapterInterface as Db;
 use Magento\Framework\DB\Ddl\Table;

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Matozan\Magento\Controller\Brand;
+namespace Matozan\SetupScripts\Controller\Brand;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\Raw;
 use Magento\Framework\Controller\ResultFactory;
-use Matozan\Magento\Model\Brand;
-use Matozan\Magento\Model\BrandFactory;
-use Matozan\Magento\Model\ResourceModel\Brand as ResourceModel;
-use Matozan\Magento\Model\ResourceModel\Brand\Collection;
-use Matozan\Magento\Model\ResourceModel\Brand\CollectionFactory;
+use Matozan\SetupScripts\Model\Brand;
+use Matozan\SetupScripts\Model\BrandFactory;
+use Matozan\SetupScripts\Model\ResourceModel\Brand as ResourceModel;
+use Matozan\SetupScripts\Model\ResourceModel\Brand\Collection;
+use Matozan\SetupScripts\Model\ResourceModel\Brand\CollectionFactory;
 
 class Index extends Action
 {
